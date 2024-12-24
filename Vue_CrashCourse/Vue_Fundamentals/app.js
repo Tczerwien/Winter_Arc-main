@@ -1,23 +1,24 @@
-Vue.createApp({
-    data(){
-        return{
-            lasnName: 'Czerwien'
-        }
-    }
-}).mount('#wrap')
-
-Vue.createApp({
+const vm = Vue.createApp({
     data(){
         return {
-            firstName: 'Thomas'
+            lastName: 'Czerwien',
+            names: {
+                person_1: {
+                    firstName: 'Teresa'
+                }, 
+                person_2: {
+                    firstName: 'Thomas'
+                }
+            }
+        }
+    },
+    methods: {
+        fullName(firstName){
+            return `${firstName} ${this.lastName.toUpperCase()}`
         }
     }
-}).mount('#app')
+}).mount('#listNames')
 
-Vue.createApp({
-    data(){
-        return{
-            firstName: 'Teresa'
-        }
-    }
-}).mount('#test')
+setTimeout(() => {
+    vm.names.person_2.firstName = 'Daniel';
+}, 2000);

@@ -5,14 +5,18 @@
     <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
 
-<body id="wrap">
-    <div id ="test">
-        {{ firstName lastName }}
-    </div>
+<body>
+    <div id="listNames"> 
+        <div id="person_1">
+<!-- Complex, avoid when possible. Try seperating the logic from the vue-->
+            {{ `${names.person_1.firstName} ${lastName.toUpperCase()}` }}
+        </div>
 
-    <div id="app"> 
-        {{ firstName }}
+        <div id="person_2">
+            {{ fullName(names.person_2.firstName) }}
+        </div>
     </div>
+    
 
     <script src="https://unpkg.com/vue@3"></script>
     <script src="app.js"></script>
