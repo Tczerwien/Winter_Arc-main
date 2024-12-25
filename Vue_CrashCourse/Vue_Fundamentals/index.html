@@ -6,14 +6,39 @@
 </head>
 
 <body>
-    <div id="listNames"> 
+    <div id="listNames" v-cloak> 
         <div id="person_1">
 <!-- Complex, avoid when possible. Try seperating the logic from the vue-->
             {{ `${names.person_1.firstName} ${lastName.toUpperCase()}` }}
         </div>
-
+        <div>
+            <div>Age = {{ ages.person_1.age }}</div>
+        </div>
+        <button type="button" v-on:click="increment('person_1')">Increment</button>
+        <button type="button" @click="decrement('person_1')">Decrement</button>
+        <br />
         <div id="person_2">
-            {{ fullName(names.person_2.firstName) }}
+            <div>{{ fullName(names.person_2.firstName) }}</div>
+            <div>Age = {{ages.person_3.age}}</div>
+            <button type="button" v-on:click="increment('person_3')">Increment</button>
+            <button type="button" @click="decrement('person_3')">Decrement</button>
+
+
+
+            <p><a :href="url" target="_blank">Google</a></p>
+<!-- v-html is used to render html content, however it can be risky and vulnerable to XSS. Not much can be done about this on the front end. It is mostly on the backend to sanatize the URL -->
+            <p v-html="rawURL"></p>
+
+            <hr />
+
+            <label>First Name1</label>
+            <input type="text" v-model="names.person_1.firstName"/>
+
+            <label>First Name2</label>
+            <input type="text" v-model="names.person_2.firstName"/>
+<!-- the difference between v-model and v-value is that model updates in real time while value does not-->
+            <label>Last Name</label>
+            <input type="text" :value="lastName" @input="updateLastName"/>
         </div>
     </div>
     

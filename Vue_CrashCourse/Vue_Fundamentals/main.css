@@ -6,3 +6,8 @@ input[type="text"]{
     margin: 10px 0;
     display: block;
 }
+
+/*v-cloak is a directive that hides the element until the Vue instance is ready*/
+[v-cloak]{
+    display: none;
+}
